@@ -1,0 +1,644 @@
+export const translations = {
+  en: {
+
+    orgName: "CCMS",
+    appName: "Competency Certification\nManagement System",
+    tagline:
+      "Applications, verification and certificate records  issued, tracked and restored by reference number.",
+    portalLabel: "Issuing Authority Portal",
+    portalSuffix: "Portal",
+    recentlyIssued: "Recently issued",
+    signOut: "Sign out",
+
+    auth_welcome: "Welcome",
+    auth_signInAs: "Sign in as",
+    auth_createAccount: "Create Account",
+    auth_registerAs: "Register as",
+    auth_footer: "© {year} Butajira City Administration.",
+    auth_loginLeftTitle: "Welcome Back",
+    auth_loginLeftDesc: "Log in to access your digital competencies, official credentials and licenses securely through our verified network.",
+    auth_registerLeftTitle: "Create Account",
+    auth_registerLeftDesc: "Join the Butajira Competency Certification network to securely issue, manage and verify digital credentials.",
+
+
+    role_applicant: "Applicant",
+    role_staff: "Staff",
+    role_admin: "Admin",
+
+
+    signInAs: "Sign in as",
+    username: "Username",
+    password: "Password",
+    show: "Show",
+    hide: "Hide",
+    forgotPassword: "Forgot password?",
+    signIn: "Sign in",
+    verifying: "Verifying…",
+    errorRequiredLogin: "Enter both a username and a password to continue.",
+    errorEmail: "Enter a valid email address.",
+    errorPasswordMin: "Password must be at least 8 characters.",
+    footerApplicant:
+      "Your username and password were issued by an administrator. Contact your office if you need them reset.",
+    footerStaffAdmin:
+      "Account provisioning is handled by an administrator. Contact your supervisor for access issues.",
+    welcomeTitle: "Welcome To Butajira Competency Certification",
+    welcomeSubtitle: "Explore Our Competency Certificate System",
+    signingInAsLine: "Signing in as {role}",
+    logInAsButton: "Log In as {role}",
+
+
+    chooseAppType: "How would you like to apply?",
+    appType_new: "New applicant",
+    appType_new_desc: "First time applying for a competency certificate.",
+    appType_existing: "Existing certificate holder",
+    appType_existing_desc:
+      "Renew your certificate using your reference number.",
+    renewal_title: "Renew your certificate",
+    renewal_refLabel: "Reference number",
+    renewal_refPlaceholder: "e.g. 1/2018",
+    renewal_lookup: "Look up",
+    renewal_lookingUp: "Looking up…",
+    renewal_notFound: "No issued certificate found for that reference number.",
+    renewal_wrongOwner: "That certificate does not belong to your account.",
+    renewal_found: "Certificate found",
+    renewal_holder: "Certificate holder",
+    renewal_service: "Service",
+    renewal_latestYear: "Last issued year",
+    renewal_photoRequired: "Current photo (required)",
+    renewal_photoHint: "Upload a recent photo to accompany the renewal.",
+    renewal_submit: "Submit renewal",
+    renewal_submitting: "Submitting…",
+    renewal_success: "Renewal submitted",
+    renewal_successBody:
+      "Your renewal for reference {ref} has been submitted and is awaiting staff review.",
+    tin_verifyHint:
+      "Your TIN will be verified against the government registry on submission.",
+
+
+    newSubmission: "New submission",
+    formTitle: "Competency Certification Application",
+    step_business: "Business",
+    step_applicant: "Applicant",
+    step_service: "Service",
+    step_documents: "Documents",
+    step_review: "Review",
+    back: "Back",
+    continue: "Continue",
+    submitApplication: "Submit application",
+    required: "Required",
+
+
+    businessInfoTitle: "Business information",
+    businessInfoHint:
+      "If you hold a trade license, enter your TIN. It will be verified against the government registry when you submit.",
+    hasTradeLicense: "I have a trade license",
+    hasTradeLicenseDesc: "Select this if you have an officially registered business and TIN.",
+    tinNumber: "TIN number",
+    tinPlaceholder: "e.g. 0012345678",
+    tin_verifyHint: "Your TIN will be verified against the government registry.",
+    businessNamePlaceholder: "e.g. Abebe Trading",
+    businessNameHint: "Must match the government registry.",
+    fetchDetails: "Fetch details",
+    lookingUp: "Looking up…",
+    tinMatched: "Matched: {businessName}",
+    tradeLicense: "Trade license",
+    tradeLicenseHint: "PDF, JPG, or PNG",
+    noTradeLicense:
+      "No trade license the certificate's TIN section will be left blank.",
+
+
+    applicantInfoTitle: "Applicant information",
+    fullName: "Full name",
+    gender: "Gender",
+    select: "Select",
+    male: "Male",
+    female: "Female",
+    dob: "Date of birth",
+    phone: "Phone number",
+    addressTitle: "Address",
+    region: "Region",
+    woreda: "Woreda",
+    kebele: "Kebele",
+    houseNo: "House No.",
+    poBox: "P.O. Box",
+    fax: "Fax",
+    email: "Email",
+    licenseOwnerAddress: "Applicant Address",
+    licenseOwnerAddressPlaceholder: "Full applicant address for certificate",
+
+
+    serviceTypeTitle: "Service type",
+    serviceTypeSelectLabel: "Select the service you're applying for",
+    selectServiceType: "Select a service type",
+    serviceCode: "Service code",
+
+
+    documentsTitle: "Supporting documents",
+    documentsHint: "Accepted: PDF, JPG, JPEG, PNG, DOCX",
+    applicantPhoto: "Applicant photo",
+    educationCertificate: "Education certificate",
+    competencyCertificate: "Competency certificate",
+    dragOrClick: "Drag a file here, or click to browse",
+    remove: "Remove",
+    otherDocuments: "Other documents (optional)",
+    otherDocumentsHint: "Click to add extra files  PDF, JPG, PNG, DOCX",
+
+
+    reviewTitle: "Review before submitting",
+    edit: "Edit",
+    businessName: "Business name",
+    notProvided: "Not provided",
+    service: "Service",
+
+
+    submissionReceived: "Submission received",
+    submissionBody:
+      "Your application for {service} has been submitted and is now waiting for staff review. You'll be able to track its status from your dashboard.",
+    goToDashboard: "Go to my dashboard",
+
+
+    status_draft: "Draft",
+    status_staff_review: "Pending Staff Review",
+    status_staff_rejected: "Rejected by Staff",
+    status_admin_review: "Pending Admin Review",
+    status_admin_rejected: "Rejected by Admin",
+    status_admin_approved: "Approved Awaiting Certificate",
+    status_certificate_generated: "Certificate Issued",
+    status_withdrawn: "Withdrawn",
+
+
+    mySubmissions: "My submissions",
+    yourApplications: "Your applications",
+    newApplication: "+ New application",
+    noApplicationsYet: "You haven't submitted an application yet.",
+    startApplication: "Start an application",
+    staffFeedback: "Staff feedback",
+    adminFeedback: "Admin feedback",
+    referenceNo: "Reference No.",
+    submitted: "submitted",
+
+
+    nav_dashboard: "Dashboard",
+    nav_overview: "Overview",
+    nav_pendingReview: "Pending Review",
+    nav_applications: "Applications",
+    nav_settings: "Settings",
+    administrator: "Administrator",
+
+
+    adminDashboardTitle: "Admin dashboard",
+    stat_appsToday: "Applications today",
+    stat_pendingMyReview: "Pending my review",
+    stat_certsIssued: "Certificates issued",
+    stat_rejected: "Rejected",
+    recentApplications: "Recent applications",
+    viewAll: "View all",
+    col_applicant: "Applicant",
+    col_service: "Service",
+    col_submitted: "Submitted",
+    col_refNo: "Ref. No.",
+    col_status: "Status",
+    noApplicationsYet2: "No applications yet.",
+
+
+    pendingReviewCount: "Pending review ({count})",
+    nothingWaiting: "Nothing waiting on you.",
+    markAllRead: "Mark all as read",
+    notifications: "Notifications",
+    viewAllApplications: "View all applications",
+
+
+    notif_staff_approved:
+      "Your application was approved by staff and is now pending admin review.",
+    notif_admin_approved:
+      "Your application was approved by admin certificate is being prepared.",
+    notif_certificate_generated: "Your certificate has been issued.",
+    notif_staff_rejected: "Your application was rejected by staff.",
+    notif_admin_rejected: "Your application was rejected by admin.",
+    notif_noUpdates: "No updates on your applications yet.",
+    viewMyApplications: "View my applications",
+
+
+    allRecords: "All records",
+    applicationsTitle: "Applications",
+    filterByStatus: "Filter by status",
+    filter_all: "All",
+    filter_pendingStaff: "Pending Staff",
+    filter_pendingAdmin: "Pending Admin",
+    filter_issued: "Issued",
+    filter_staffRejected: "Staff Rejected",
+    filter_adminRejected: "Admin Rejected",
+    searchLabel: "Search",
+    searchPlaceholder: "Search name, phone, ref no…",
+    results: "Results ({count})",
+    noMatch: "No applications match this view.",
+
+
+    backToApplications: "Back",
+    notFoundApplication: 'No application found with id "{id}".',
+    finalDecision: "Final decision",
+    approveAction: "Approve",
+    rejectAction: "Reject",
+    reasonForRejection: "Reason for rejection",
+    confirmRejection: "Confirm rejection",
+    cancelAction: "Cancel",
+    certificateLabel: "Certificate",
+    approvedGenerateHint:
+      "Approved. Generate the certificate to assign a reference number.",
+    generateCertificate: "Generate certificate",
+    certIssuedHeading: "Certificate issued",
+    viewPrintCertificate: "View / print certificate",
+
+
+    tab_account: "Account",
+    tab_users: "User Management",
+    tab_serviceTypes: "Service Types",
+    tab_general: "General",
+
+
+    currentPassword: "Current password",
+    newPasswordLabel: "New password",
+    confirmNewPassword: "Confirm new password",
+    updatePassword: "Update password",
+    err_enterCurrentPassword: "Enter your current password.",
+    err_passwordMinLength: "New password must be at least 8 characters.",
+    err_passwordMismatch: "New password and confirmation do not match.",
+    toast_passwordUpdated: "Password updated.",
+
+
+    serviceTypesCount: "Service types ({count})",
+    addServiceType: "Add service type",
+    serviceTypesHint:
+      "Changes here are stored locally and don't yet affect the live applicant form that wiring is a separate step.",
+    ph_code: "Code (5-digit)",
+    ph_tier: "Tier (optional)",
+    ph_nameEn: "Name (English)",
+    ph_nameAm: "Name (Amharic)",
+    saveAction: "Save",
+    col_code: "Code",
+    col_tier: "Tier",
+    col_name: "Name",
+    col_nameEn: "Name (EN)",
+    col_nameAm: "Name (AM)",
+    deleteConfirmType: 'Delete "{name}"?',
+    yesDelete: "Yes, delete",
+    toast_typeUpdated: "Service type updated.",
+    toast_typeAdded: "Service type added.",
+    toast_typeRemoved: "Service type removed.",
+    err_codeNameRequired: "Code and English name are required.",
+
+
+    userAccountsCount: "User accounts ({count})",
+    newAccountAction: "New account",
+    userMgmtHint:
+      "Creates a username and a system-generated temporary password. This is stored locally for now it doesn't yet drive the actual sign-in check on the login page.",
+    ph_username: "Username",
+    ph_fullNameOptional: "Full name (optional)",
+    createAccountAction: "Create account",
+    col_user: "User",
+    col_role: "Role",
+    col_tempPassword: "Temp password",
+    activeLabel: "Active",
+    disabledLabel: "Disabled",
+    showLabel: "(show)",
+    deleteAccountConfirm: 'Delete account "{username}"?',
+    toast_accountCreated:
+      "Account created for {username}. Share the temporary password securely.",
+    toast_userDeactivated: "User deactivated.",
+    toast_userReactivated: "User reactivated.",
+    toast_passwordReset: "Temporary password generated.",
+    toast_accountRemoved: "Account removed.",
+    toast_copied: "Copied to clipboard.",
+    err_usernameRequired: "Username is required.",
+    err_usernameTaken: "That username is already taken.",
+
+
+    orgInfoTitle: "Organization information",
+    orgNameEnLabel: "Organization name (English)",
+    orgNameAmLabel: "Organization name (Amharic)",
+    contactEmail: "Contact email",
+    contactPhone: "Contact phone",
+    saveChanges: "Save changes",
+    toast_orgSaved: "Organization settings saved.",
+    toast_orgSaveFailed: "Could not save settings.",
+  },
+
+  am: {
+
+    orgName: "CCMS",
+    appName: "የብቃት ማረጋገጫ\nአስተዳደር ሥርዓት",
+    tagline:
+      "ማመልከቻዎች፣ ማረጋገጫ እና የምስክር ወረቀት መዝገቦች በማጣቀሻ ቁጥር ይሰጣሉ፣ ይከታተላሉ፣ ይመለሳሉ።",
+    portalLabel: "የፈቃድ ሰጪ ባለስልጣን መግቢያ",
+    portalSuffix: "መግቢያ",
+    recentlyIssued: "በቅርቡ የተሰጡ",
+    signOut: "ውጣ",
+
+    auth_welcome: "እንኳን ደህና መጡ",
+    auth_signInAs: "ይግቡ እንደ",
+    auth_createAccount: "መለያ ይፍጠሩ",
+    auth_registerAs: "ይመዝገቡ እንደ",
+    auth_footer: "© {year} የቡታጅራ ከተማ አስተዳደር።",
+    auth_loginLeftTitle: "እንኳን ደህና መጡ",
+    auth_loginLeftDesc: "ዲጂታል ብቃቶችዎን፣ ይፋዊ ምስክር ወረቀቶችዎን እና ፍቃዶችዎን በተረጋገጠው አውታረ መረባችን ደህንነቱ በተጠበቀ ሁኔታ ለማግኘት ይግቡ።",
+    auth_registerLeftTitle: "መለያ ይፍጠሩ",
+    auth_registerLeftDesc: "ዲጂታል ማስረጃዎችን ደህንነቱ በተጠበቀ ሁኔታ ለመስጠት፣ ለማስተዳደር እና ለማረጋገጥ የቡታጅራ የብቃት ማረጋገጫ ኔትወርክን ይቀላቀሉ።",
+
+
+    role_applicant: "አመልካች",
+    role_staff: "ሰራተኛ",
+    role_admin: "አስተዳዳሪ",
+
+
+    signInAs: "እንደ ግባ",
+    username: "የተጠቃሚ ስም",
+    password: "የይለፍ ቃል",
+    show: "አሳይ",
+    hide: "ደብቅ",
+    forgotPassword: "የይለፍ ቃል ረሳህ?",
+    signIn: "ግባ",
+    verifying: "በማረጋገጥ ላይ…",
+    errorRequiredLogin: "ለመቀጠል የተጠቃሚ ስም እና የይለፍ ቃል ያስገቡ።",
+    errorEmail: "ትክክለኛ ኢ-ሜይል አድራሻ ያስገቡ።",
+    errorPasswordMin: "የይለፍ ቃል ቢያንስ 8 ፊደላት ሊኖረው ይገባል።",
+    footerApplicant:
+      "የተጠቃሚ ስምዎ እና የይለፍ ቃልዎ በአስተዳዳሪ ተሰጥቷል። ዳግም ማስጀመር ካስፈለገዎት ቢሮዎን ያግኙ።",
+    footerStaffAdmin:
+      "የተጠቃሚ አካውንት አዘገጃጀት በአስተዳዳሪ ይከናወናል። ለመዳረሻ ችግሮች ተቆጣጣሪዎን ያግኙ።",
+    welcomeTitle: "ወደ ቡታጅራ የብቃት ማረጋገጫ በደህና መጡ",
+    welcomeSubtitle: "የብቃት ማረጋገጫ ስርዓታችንን ያስሱ",
+    signingInAsLine: "እንደ {role} እየገቡ ነው",
+    logInAsButton: "እንደ {role} ግባ",
+
+
+    chooseAppType: "እንዴት ማመልከት ይፈልጋሉ?",
+    appType_new: "አዲስ አመልካች",
+    appType_new_desc: "ለመጀመሪያ ጊዜ የብቃት ማረጋገጫ ለማግኘት ያመለክቱ።",
+    appType_existing: "ነባር የምስክር ወረቀት ያዥ",
+    appType_existing_desc: "በማጣቀሻ ቁጥርዎ የምስክር ወረቀትዎን ያድሱ።",
+    renewal_title: "የምስክር ወረቀትዎን ያድሱ",
+    renewal_refLabel: "የማጣቀሻ ቁጥር",
+    renewal_refPlaceholder: "ለምሳሌ 1/2018",
+    renewal_lookup: "ፈልግ",
+    renewal_lookingUp: "በመፈለግ ላይ…",
+    renewal_notFound: "ለዚያ የማጣቀሻ ቁጥር የተሰጠ የምስክር ወረቀት አልተገኘም።",
+    renewal_wrongOwner: "ያ የምስክር ወረቀት ለእርስዎ መለያ አይደለም።",
+    renewal_found: "የምስክር ወረቀት ተገኝቷል",
+    renewal_holder: "የምስክር ወረቀት ያዥ",
+    renewal_service: "አገልግሎት",
+    renewal_latestYear: "የመጨረሻ የተሰጠ ዓመት",
+    renewal_photoRequired: "የአሁኑ ፎቶ (ያስፈልጋል)",
+    renewal_photoHint: "ለዕድሳቱ የቅርብ ጊዜ ፎቶ ያስገቡ።",
+    renewal_submit: "ዕድሳት አስገባ",
+    renewal_submitting: "በማስገባት ላይ…",
+    renewal_success: "ዕድሳት ገብቷል",
+    renewal_successBody: "ለማጣቀሻ {ref} ያስገቡት ዕድሳት ገብቷል እና በሰራተኛ ግምገማ ላይ ነው።",
+    tin_verifyHint: "የግብር ከፋይ መለያ ቁጥርዎ ሲያስገቡ ከመንግስት መዝገብ ጋር ይረጋገጣል።",
+
+
+    newSubmission: "አዲስ ማመልከቻ",
+    formTitle: "የብቃት ማረጋገጫ ማመልከቻ",
+    step_business: "ንግድ",
+    step_applicant: "አመልካች",
+    step_service: "አገልግሎት",
+    step_documents: "ሰነዶች",
+    step_review: "ግምገማ",
+    back: "ተመለስ",
+    continue: "ቀጥል",
+    submitApplication: "ማመልከቻ አስገባ",
+    required: "የግድ ያስፈልጋል",
+
+
+    businessInfoTitle: "የንግድ መረጃ",
+    businessInfoHint:
+      "የንግድ ፈቃድ ካልዎት፣ የግብር ከፋይ መለያ ቁጥርዎን ያስገቡ። ሲያስገቡ ከመንግስት መዝገብ ጋር ይረጋገጣል።",
+    hasTradeLicense: "የንግድ ፈቃድ አለኝ",
+    hasTradeLicenseDesc: "በህጋዊ የተመዘገበ ንግድ እና የግብር ከፋይ መለያ ቁጥር (TIN) ካለዎት ይህንን ይምረጡ።",
+    tinNumber: "የግብር ከፋይ መለያ ቁጥር",
+    tinPlaceholder: "ምሳሌ፡ 0012345678",
+    businessNamePlaceholder: "ምሳሌ፡ አበበ ትሬዲንግ",
+    businessNameHint: "ከመንግስት መዝገብ ጋር መመሳሰል አለበት።",
+    fetchDetails: "መረጃ አምጣ",
+    lookingUp: "በመፈለግ ላይ…",
+    tinMatched: "ተገኝቷል፦ {businessName}",
+    tradeLicense: "የንግድ ፈቃድ",
+    tradeLicenseHint: "PDF፣ JPG ወይም PNG",
+    noTradeLicense: "የንግድ ፈቃድ የለም የምስክር ወረቀቱ የግብር ከፋይ መለያ ቁጥር ክፍል ባዶ ይቀራል።",
+
+
+    applicantInfoTitle: "የአመልካች መረጃ",
+    fullName: "ሙሉ ስም",
+    gender: "ጾታ",
+    select: "ይምረጡ",
+    male: "ወንድ",
+    female: "ሴት",
+    dob: "የትውልድ ቀን",
+    phone: "ስልክ ቁጥር",
+    addressTitle: "አድራሻ",
+    region: "ክልል",
+    woreda: "ወረዳ",
+    kebele: "ቀበሌ",
+    houseNo: "የቤት ቁጥር",
+    poBox: "ፖ.ሣ.ቁ",
+    fax: "ፋክስ",
+    email: "ኢ-ሜይል",
+    licenseOwnerAddress: "የአመልካች አድራሻ",
+    licenseOwnerAddressPlaceholder: "ለምስክር ወረቀቱ የሚሆን የአመልካች ሙሉ አድራሻ",
+
+
+    serviceTypeTitle: "የአገልግሎት ዓይነት",
+    serviceTypeSelectLabel: "የሚያመለክቱበትን አገልግሎት ይምረጡ",
+    selectServiceType: "የአገልግሎት ዓይነት ይምረጡ",
+    serviceCode: "የአገልግሎት ኮድ",
+
+
+    documentsTitle: "የሚያስፈልጉ ሰነዶች",
+    documentsHint: "ተቀባይነት ያላቸው፦ PDF, JPG, JPEG, PNG, DOCX",
+    applicantPhoto: "የአመልካች ፎቶ",
+    educationCertificate: "የትምህርት ማስረጃ",
+    competencyCertificate: "የብቃት ማስረጃ",
+    dragOrClick: "ፋይል እዚህ ይጣሉ ወይም ለመምረጥ ይጫኑ",
+    remove: "አስወግድ",
+    otherDocuments: "ሌሎች ሰነዶች (አማራጭ)",
+    otherDocumentsHint: "ተጨማሪ ፋይሎች ለማከል ይጫኑ  PDF, JPG, PNG, DOCX",
+
+
+    reviewTitle: "ከማስገባትዎ በፊት ይገምግሙ",
+    edit: "አርትዕ",
+    businessName: "የንግድ ስም",
+    notProvided: "አልቀረበም",
+    service: "አገልግሎት",
+
+
+    submissionReceived: "ማመልከቻው ደርሷል",
+    submissionBody:
+      "ለ{service} ያስገቡት ማመልከቻ ገብቷል እና በአሁኑ ጊዜ በሰራተኛ ግምገማ ላይ ነው። ሁኔታውን ከዳሽቦርድዎ መከታተል ይችላሉ።",
+    goToDashboard: "ወደ ዳሽቦርዴ ሂድ",
+
+
+    status_draft: "ረቂቅ",
+    status_staff_review: "በሰራተኛ ግምገማ ላይ",
+    status_staff_rejected: "በሰራተኛ ተቀባይነት አላገኘም",
+    status_admin_review: "በአስተዳዳሪ ግምገማ ላይ",
+    status_admin_rejected: "በአስተዳዳሪ ተቀባይነት አላገኘም",
+    status_admin_approved: "ጸድቋል የምስክር ወረቀት በመጠባበቅ ላይ",
+    status_certificate_generated: "የምስክር ወረቀት ተሰጥቷል",
+    status_withdrawn: "በአመልካች ተነስቷል",
+
+
+    mySubmissions: "የእኔ ማመልከቻዎች",
+    yourApplications: "የእርስዎ ማመልከቻዎች",
+    newApplication: "+ አዲስ ማመልከቻ",
+    noApplicationsYet: "እስካሁን ማመልከቻ አላስገቡም።",
+    startApplication: "ማመልከቻ ጀምር",
+    staffFeedback: "የሰራተኛ አስተያየት",
+    adminFeedback: "የአስተዳዳሪ አስተያየት",
+    referenceNo: "የማጣቀሻ ቁጥር",
+    submitted: "ገብቷል",
+
+
+    nav_dashboard: "ዳሽቦርድ",
+    nav_overview: "አጠቃላይ እይታ",
+    nav_pendingReview: "በመጠባበቅ ላይ ያሉ ግምገማዎች",
+    nav_applications: "ማመልከቻዎች",
+    nav_settings: "ቅንብሮች",
+    administrator: "አስተዳዳሪ",
+
+
+    adminDashboardTitle: "የአስተዳዳሪ ዳሽቦርድ",
+    stat_appsToday: "የዛሬ ማመልከቻዎች",
+    stat_pendingMyReview: "የእኔን ግምገማ የሚጠብቁ",
+    stat_certsIssued: "የተሰጡ ማረጋገጫዎች",
+    stat_rejected: "ተቀባይነት ያላገኙ",
+    recentApplications: "የቅርብ ጊዜ ማመልከቻዎች",
+    viewAll: "ሁሉንም ይመልከቱ",
+    col_applicant: "አመልካች",
+    col_service: "አገልግሎት",
+    col_submitted: "የገባበት ቀን",
+    col_refNo: "የማጣቀሻ ቁ.",
+    col_status: "ሁኔታ",
+    noApplicationsYet2: "እስካሁን ማመልከቻ የለም።",
+
+
+    pendingReviewCount: "በመጠባበቅ ላይ ያሉ ግምገማዎች ({count})",
+    nothingWaiting: "የሚጠብቅ ነገር የለም።",
+    markAllRead: "ሁሉንም እንደተነበበ ምልክት አድርግ",
+    notifications: "ማሳወቂያዎች",
+    viewAllApplications: "ሁሉንም ማመልከቻዎች ይመልከቱ",
+
+
+    notif_staff_approved: "ማመልከቻዎ በሰራተኛ ጸድቋል፣ አሁን በአስተዳዳሪ ግምገማ ላይ ነው።",
+    notif_admin_approved: "ማመልከቻዎ በአስተዳዳሪ ጸድቋል የምስክር ወረቀት እየተዘጋጀ ነው።",
+    notif_certificate_generated: "የምስክር ወረቀትዎ ተሰጥቷል።",
+    notif_staff_rejected: "ማመልከቻዎ በሰራተኛ ተቀባይነት አላገኘም።",
+    notif_admin_rejected: "ማመልከቻዎ በአስተዳዳሪ ተቀባይነት አላገኘም።",
+    notif_noUpdates: "እስካሁን ምንም ዝማኔ የለም።",
+    viewMyApplications: "ማመልከቻዎቼን ይመልከቱ",
+
+
+    allRecords: "ሁሉም መዝገቦች",
+    applicationsTitle: "ማመልከቻዎች",
+    filterByStatus: "በሁኔታ አጣራ",
+    filter_all: "ሁሉም",
+    filter_pendingStaff: "በሰራተኛ በመጠባበቅ ላይ",
+    filter_pendingAdmin: "በአስተዳዳሪ በመጠባበቅ ላይ",
+    filter_issued: "የተሰጠ",
+    filter_staffRejected: "በሰራተኛ ተቀባይነት ያላገኘ",
+    filter_adminRejected: "በአስተዳዳሪ ተቀባይነት ያላገኘ",
+    searchLabel: "ፍለጋ",
+    searchPlaceholder: "በስም፣ ስልክ፣ ማጣቀሻ ቁ. ይፍልጉ…",
+    results: "ውጤቶች ({count})",
+    noMatch: "ምንም ማመልከቻ አይገጣጠምም።",
+
+
+    backToApplications: "ተመለስ",
+    notFoundApplication: 'መታወቂያ "{id}" ያለው ማመልከቻ አልተገኘም።',
+    finalDecision: "የመጨረሻ ውሳኔ",
+    approveAction: "አጽድቅ",
+    rejectAction: "አትቀበል",
+    reasonForRejection: "የመቀበል ያለመቻል ምክንያት",
+    confirmRejection: "አለመቀበልን አረጋግጥ",
+    cancelAction: "ሰርዝ",
+    certificateLabel: "የምስክር ወረቀት",
+    approvedGenerateHint: "ጸድቋል። የማጣቀሻ ቁጥር ለመስጠት የምስክር ወረቀት ያመንጁ።",
+    generateCertificate: "የምስክር ወረቀት አመንጭ",
+    certIssuedHeading: "የምስክር ወረቀት ተሰጥቷል",
+    viewPrintCertificate: "የምስክር ወረቀት ይመልከቱ / አትም",
+
+
+    tab_account: "መለያ",
+    tab_users: "የተጠቃሚ አስተዳደር",
+    tab_serviceTypes: "የአገልግሎት ዓይነቶች",
+    tab_general: "አጠቃላይ",
+
+
+    currentPassword: "የአሁኑ የይለፍ ቃል",
+    newPasswordLabel: "አዲስ የይለፍ ቃል",
+    confirmNewPassword: "አዲሱን የይለፍ ቃል ያረጋግጡ",
+    updatePassword: "የይለፍ ቃል አዘምን",
+    err_enterCurrentPassword: "የአሁኑን የይለፍ ቃል ያስገቡ።",
+    err_passwordMinLength: "አዲሱ የይለፍ ቃል ቢያንስ 8 ፊደላት ሊኖረው ይገባል።",
+    err_passwordMismatch: "አዲሱ የይለፍ ቃል እና ማረጋገጫው አይመሳሰሉም።",
+    toast_passwordUpdated: "የይለፍ ቃል ተዘምኗል።",
+
+
+    serviceTypesCount: "የአገልግሎት ዓይነቶች ({count})",
+    addServiceType: "የአገልግሎት ዓይነት ጨምር",
+    serviceTypesHint:
+      "እዚህ ላሉ ለውጦች በአካባቢው ይቀመጣሉ እና እስካሁን በቀጥታ የአመልካች ፎርም ላይ ተጽዕኖ አያሳርፉም ያ ማገናኘት የተለየ ደረጃ ነው።",
+    ph_code: "ኮድ (5 አሃዝ)",
+    ph_tier: "ደረጃ (አማራጭ)",
+    ph_nameEn: "ስም (እንግሊዝኛ)",
+    ph_nameAm: "ስም (አማርኛ)",
+    saveAction: "አስቀምጥ",
+    col_name: "ስም",
+    col_nameEn: "ስም (እንግ)",
+    col_nameAm: "ስም (አማ)",
+    deleteConfirmType: '"{name}" ይሰረዝ?',
+    yesDelete: "አዎ፣ ሰርዝ",
+    toast_typeUpdated: "የአገልግሎት ዓይነት ተዘምኗል።",
+    toast_typeAdded: "የአገልግሎት ዓይነት ተጨምሯል።",
+    toast_typeRemoved: "የአገልግሎት ዓይነት ተሰርዟል።",
+    err_codeNameRequired: "ኮድ እና የእንግሊዝኛ ስም ያስፈልጋሉ።",
+
+
+    userAccountsCount: "የተጠቃሚ መለያዎች ({count})",
+    newAccountAction: "አዲስ መለያ",
+    userMgmtHint:
+      "የተጠቃሚ ስም እና በስርዓት የተመነጨ ጊዜያዊ የይለፍ ቃል ይፈጥራል። ይህ ለጊዜው በአካባቢው ይቀመጣል እስካሁን በመግቢያ ገጹ ላይ ትክክለኛውን ማረጋገጫ አይመራም።",
+    ph_username: "የተጠቃሚ ስም",
+    ph_fullNameOptional: "ሙሉ ስም (አማራጭ)",
+    createAccountAction: "መለያ ፍጠር",
+    col_user: "ተጠቃሚ",
+    col_role: "ሚና",
+    col_tempPassword: "ጊዜያዊ የይለፍ ቃል",
+    activeLabel: "ንቁ",
+    disabledLabel: "ተሰናክሏል",
+    showLabel: "(አሳይ)",
+    deleteAccountConfirm: 'መለያ "{username}" ይሰረዝ?',
+    toast_accountCreated: "መለያ ለ{username} ተፍጥሯል። ጊዜያዊ የይለፍ ቃሉን በጥንቃቄ ያጋሩ።",
+    toast_userDeactivated: "ተጠቃሚ ተሰናክሏል።",
+    toast_userReactivated: "ተጠቃሚ ዳግም ነቅቷል።",
+    toast_passwordReset: "ጊዜያዊ የይለፍ ቃል ተፍጥሯል።",
+    toast_accountRemoved: "መለያ ተሰርዟል።",
+    toast_copied: "ወደ ቅንጥብ ሰሌዳ ተቀዳ።",
+    err_usernameRequired: "የተጠቃሚ ስም ያስፈልጋል።",
+    err_usernameTaken: "ይህ የተጠቃሚ ስም ተይዟል።",
+
+
+    orgInfoTitle: "የድርጅት መረጃ",
+    orgNameEnLabel: "የድርጅት ስም (እንግሊዝኛ)",
+    orgNameAmLabel: "የድርጅት ስም (አማርኛ)",
+    contactEmail: "የመገኛ ኢሜይል",
+    contactPhone: "የመገኛ ስልክ",
+    saveChanges: "ለውጦችን አስቀምጥ",
+    toast_orgSaved: "የድርጅት ቅንብሮች ተቀምጠዋል።",
+    toast_orgSaveFailed: "ቅንብሮችን ማስቀመጥ አልተቻለም።",
+  },
+};
+
+export function interpolate(str, vars = {}) {
+  return str.replace(/\{(\w+)\}/g, (_, key) =>
+    vars[key] !== undefined ? vars[key] : `{${key}}`,
+  );
+}
