@@ -264,23 +264,6 @@ export default function RegisterForm({ role: initialRole = "applicant" }) {
               </motion.div>
             </form>
 
-            {role === "applicant" && (
-              <motion.div variants={itemVariants} className="mt-6">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="flex-1 h-[1px] bg-gray-200" />
-                  <span className="text-[11px] font-semibold uppercase tracking-widest text-gray-400">OR</span>
-                  <div className="flex-1 h-[1px] bg-gray-200" />
-                </div>
-                <a
-                  href="/api/auth/google"
-                  className="w-full h-11 bg-white hover:bg-gray-50 text-gray-700 font-semibold text-sm border border-gray-300 rounded-lg transition-colors flex items-center justify-center gap-3 shadow-sm cursor-pointer"
-                >
-                  <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google" className="w-5 h-5" />
-                  <span>Sign up with Google</span>
-                </a>
-              </motion.div>
-            )}
-
             <motion.div variants={itemVariants} className="mt-6 border-t border-gray-100 pt-4 text-center">
               <p className="text-gray-500 text-xs font-medium">
                 Already have an account?{" "}

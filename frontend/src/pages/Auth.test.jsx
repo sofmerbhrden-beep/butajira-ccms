@@ -41,6 +41,7 @@ describe("Authentication Pages (LoginForm & RegisterForm)", () => {
 
       expect(screen.getByPlaceholderText("Email or Username")).toBeInTheDocument();
       expect(screen.getByRole("button", { name: /Sign In/i })).toBeInTheDocument();
+      expect(screen.queryByText(/Google/i)).not.toBeInTheDocument();
     });
 
     it("shows error if email or password is empty", async () => {
@@ -151,6 +152,7 @@ describe("Authentication Pages (LoginForm & RegisterForm)", () => {
       expect(screen.getByText("Email")).toBeInTheDocument();
       expect(screen.getByText("Username")).toBeInTheDocument();
       expect(screen.getByRole("button", { name: /Create Account/i })).toBeInTheDocument();
+      expect(screen.queryByText(/Google/i)).not.toBeInTheDocument();
     });
 
     it("requires access code when staff or admin role is selected", async () => {

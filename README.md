@@ -21,9 +21,9 @@ npm run install:all
 
 ### 2. Environment Setup
 
-Copy `backend/.env.example` to `backend/.env` and set private values, especially `JWT_SECRET`, `SESSION_SECRET`, access codes, and SMTP credentials. For a local MongoDB installation, the example connection string can be used as-is. Never commit `.env` files.
+Copy `backend/.env.example` to `backend/.env` and set private values, especially `JWT_SECRET`, access codes, and SMTP credentials. For a local MongoDB installation, the example connection string can be used as-is. Never commit `.env` files.
 
-Email delivery must be configured for applicants to receive verification and password-reset codes. Google sign-in is optional; leave both Google credential values empty to disable it.
+Users sign in with their email address or username and password. Email delivery must be configured for applicants to receive verification and password-reset codes.
 
 #### Frontend (`frontend/.env`)
 ```env
@@ -64,8 +64,7 @@ Before deploying:
 1. Create a MongoDB Atlas cluster and database user. Set `MONGO_URI` in the Render API service to its connection string, using the `ccms` database. Configure Atlas Network Access to allow the Render service to connect.
 2. Set a private `STAFF_ACCESS_CODE` and `ADMIN_ACCESS_CODE` in the API service.
 3. Configure `RESEND_API_KEY` and `RESEND_FROM` in the API service. Render's free web services block outbound SMTP ports, so the app uses Resend's HTTPS API there. Verify a sender domain with Resend and use an address on that domain for `RESEND_FROM`. Applicant verification and password-reset flows require working email delivery.
-4. Google sign-in is disabled unless valid `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`, and `GOOGLE_CALLBACK_URL` values are configured in the API service and the callback URL is registered with Google.
-5. For initial admin setup, configure `SEED_ADMIN_USERNAME` and `SEED_ADMIN_PASSWORD`, then run `npm run seed` from the backend service shell once. Keep the generated credentials private and change the password after first login.
+4. For initial admin setup, configure `SEED_ADMIN_USERNAME` and `SEED_ADMIN_PASSWORD`, then run `npm run seed` from the backend service shell once. Keep the generated credentials private and change the password after first login.
 
 Never commit real credentials, database URIs, or `.env` files to GitHub. If a credential was already committed or exposed, rotate it; removing it from the latest file does not erase it from Git history.
 
@@ -75,7 +74,7 @@ Never commit real credentials, database URIs, or `.env` files to GitHub. If a cr
 
 
 ├── backend/
-│   ├── config/          # Database & Passport configuration
+│   ├── config/          # Database configuration
 │   ├── controllers/     # Route handlers (application, user, report, etc.)
 │   ├── cron/            # Scheduled jobs (certificate expiration check)
 │   ├── middleware/      # Auth, error handling, file upload
@@ -128,7 +127,6 @@ See `backend/.env.example` for the full list. Key variables:
 | `ADMIN_ACCESS_CODE` | Code required for admin registration |
 | `RESEND_API_KEY` / `RESEND_FROM` | Resend email API settings (recommended for Render) |
 | `SMTP_USER` / `SMTP_PASS` | Optional SMTP credentials for local development |
-| `GOOGLE_CLIENT_ID` / `GOOGLE_CLIENT_SECRET` | Google OAuth credentials |
 
 
 

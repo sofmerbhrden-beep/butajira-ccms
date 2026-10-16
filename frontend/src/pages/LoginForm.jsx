@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate, useSearchParams, useLocation, Link } from "react-router-dom";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 import { Eye, EyeOff, AlertCircle, CheckCircle2 } from "lucide-react";
 import { motion } from "framer-motion";
 import LanguageToggle from "../components/LanguageToggle.jsx";
@@ -31,19 +31,12 @@ export default function LoginForm() {
   const { t } = useLanguage();
   const { login } = useAuth();
   const location = useLocation();
-  const [searchParams] = useSearchParams();
   const [email, setEmail] = useState(location.state?.email || "");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
   const [successMsg, setSuccessMsg] = useState(location.state?.message || "");
   const [submitting, setSubmitting] = useState(false);
-
-  useEffect(() => {
-    if (searchParams.get("error") === "google_failed") {
-      setError("Google sign-in failed. Please try again.");
-    }
-  }, [searchParams]);
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -196,21 +189,6 @@ export default function LoginForm() {
                 </button>
               </motion.div>
             </form>
-
-            <motion.div variants={itemVariants} className="mt-6">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="flex-1 h-[1px] bg-gray-200" />
-                <span className="text-[11px] font-semibold uppercase tracking-widest text-gray-400">OR</span>
-                <div className="flex-1 h-[1px] bg-gray-200" />
-              </div>
-              <a
-                href="/api/auth/google"
-                className="w-full h-11 bg-white hover:bg-gray-50 text-gray-700 font-semibold text-sm border border-gray-300 rounded-lg transition-colors flex items-center justify-center gap-3 shadow-sm cursor-pointer"
-              >
-                <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google" className="w-5 h-5" />
-                <span>Continue with Google</span>
-              </a>
-            </motion.div>
 
             <motion.div variants={itemVariants} className="mt-6 border-t border-gray-100 pt-4 text-center">
               <p className="text-gray-500 text-xs font-medium">

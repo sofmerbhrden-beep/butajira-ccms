@@ -2,11 +2,9 @@ import "dotenv/config";
 import path from "path";
 import { fileURLToPath } from "url";
 import express from "express";
-import session from "express-session";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import rateLimit from "express-rate-limit";
-import passport from "./config/passport.js";
 
 import connectDB from "./config/db.js";
 import sessionRoutes from "./routes/sessionRoutes.js";
@@ -16,7 +14,6 @@ import certificateRoutes from "./routes/certificateRoutes.js";
 import serviceTypeRoutes from "./routes/serviceTypeRoutes.js";
 import businessRegistrationRoutes from "./routes/businessRegistrationRoutes.js";
 import settingsRoutes from "./routes/settingsRoutes.js";
-import googleAuthRoutes from "./routes/googleAuthRoutes.js";
 import reportRoutes from "./routes/reportRoutes.js";
 import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
 import { protect } from "./middleware/authMiddleware.js";
@@ -62,19 +59,6 @@ app.use(
 );
 app.use(express.json({ limit: "2mb" }));
 app.use(cookieParser());
-app.use(
-  session({
-    secret: process.env.SESSION_SECRET,
-    resave: false,
-    saveUninitialized: false,
-    cookie: {
-      secure: process.env.NODE_ENV === "production",
-      maxAge: 5 * 60 * 1000,
-    },
-  }),
-);
-app.use(passport.initialize());
-app.use(passport.session());
 
 app.use(
   "/uploads",
@@ -173,7 +157,6 @@ app.get(`${API_ROOT}/events`, protect, (req, res) => {
   });
 });
 
-app.use("/api/auth", googleAuthRoutes);
 app.use(`${API_ROOT}/sessions`, sessionRoutes);
 app.use(`${API_ROOT}/users`, userRoutes);
 app.use(`${API_ROOT}/applications`, applicationRoutes);

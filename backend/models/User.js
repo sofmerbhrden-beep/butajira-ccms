@@ -12,7 +12,6 @@ const userSchema = new mongoose.Schema(
     },
     fullName: { type: String, trim: true, default: "" },
     password: { type: String, minlength: 8, select: false },
-    googleId: { type: String, sparse: true, unique: true },
     email: { type: String, trim: true, lowercase: true, sparse: true, unique: true },
     resetToken: { type: String, select: false },
     resetTokenExpires: { type: Date, select: false },
