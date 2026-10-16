@@ -30,6 +30,20 @@ services:
         sync: false
       - key: SEED_ADMIN_PASSWORD
         sync: false
+      - key: ENABLE_DEMO_LOGINS
+        value: "false"
+      - key: DEMO_APPLICANT_USERNAME
+        value: demo-applicant
+      - key: DEMO_APPLICANT_PASSWORD
+        sync: false
+      - key: DEMO_STAFF_USERNAME
+        value: demo-staff
+      - key: DEMO_STAFF_PASSWORD
+        sync: false
+      - key: DEMO_ADMIN_USERNAME
+        value: demo-admin
+      - key: DEMO_ADMIN_PASSWORD
+        sync: false
 
   - type: web
     name: ccms-web

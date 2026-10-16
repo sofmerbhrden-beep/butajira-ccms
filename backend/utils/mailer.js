@@ -135,27 +135,6 @@ export async function sendTestEmail(to) {
   );
 }
 
-export async function sendVerificationEmail(to, code) {
-  await send(
-    to,
-    "Verification Code - Butajira CCMS",
-    wrap(`
-      <h2 style="margin:0 0 12px;font-size:20px;font-weight:800;color:#0F172A;letter-spacing:-0.3px;">Email Verification</h2>
-      <p style="font-size:14px;color:#475569;margin:0 0 24px;line-height:1.6;">
-        Use the 6-digit verification code below to complete your account verification. It expires in <strong>15 minutes</strong>.
-      </p>
-      <div style="text-align:center;margin:28px 0;">
-        <div style="display:inline-block;font-size:32px;font-weight:800;letter-spacing:10px;color:#FFFFFF;font-family:'Courier New', Courier, monospace;background-color:#1B2A4A;border:1px solid #334155;border-radius:8px;padding:16px 28px;box-shadow:0 2px 6px rgba(27,42,74,0.2);">
-          ${code}
-        </div>
-      </div>
-      <p style="font-size:12px;color:#94A3B8;margin:24px 0 0;text-align:center;">
-        If you did not create an account with Butajira CCMS, please ignore this email.
-      </p>
-    `),
-  );
-}
-
 export async function sendPasswordResetEmail(to, resetUrl) {
   await send(
     to,

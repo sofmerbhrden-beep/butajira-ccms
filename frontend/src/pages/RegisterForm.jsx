@@ -69,10 +69,7 @@ export default function RegisterForm({ role: initialRole = "applicant" }) {
       } else if (role === "admin") {
         navigate("/admin/dashboard/overview", { replace: true });
       } else {
-        navigate("/verify-email", {
-          replace: true,
-          state: { email: form.email.trim() },
-        });
+        navigate("/applicant/dashboard", { replace: true });
       }
     } catch (err) {
       setError(err.message);

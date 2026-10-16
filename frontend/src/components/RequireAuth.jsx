@@ -20,14 +20,6 @@ export default function RequireAuth({ roles, children }) {
   }
 
   if (
-    user.role === "applicant" &&
-    !user.emailVerified &&
-    location.pathname !== "/verify-email"
-  ) {
-    return <Navigate to="/verify-email" replace />;
-  }
-
-  if (
     user.mustChangePassword &&
     user.role !== "staff" &&
     user.role !== "admin" &&

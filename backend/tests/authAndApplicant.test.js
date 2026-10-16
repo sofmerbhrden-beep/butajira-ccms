@@ -7,7 +7,6 @@ app.use(express.json());
 
 // Mock mailer, token, representations, etc.
 jest.unstable_mockModule("../utils/mailer.js", () => ({
-  sendVerificationEmail: jest.fn().mockResolvedValue(true),
   sendPasswordResetEmail: jest.fn().mockResolvedValue(true),
   sendTempPasswordEmail: jest.fn().mockResolvedValue(true),
   sendStatusEmail: jest.fn().mockResolvedValue(true),
@@ -140,7 +139,6 @@ describe("Authentication & Applicant Workflow Backend Tests", () => {
         username: "applicant@example.com",
         fullName: "Applicant Name",
         role: "applicant",
-        emailVerified: false,
         save: jest.fn().mockResolvedValue(true),
       });
 
@@ -153,6 +151,27 @@ describe("Authentication & Applicant Workflow Backend Tests", () => {
 
       expect(res.status).toBe(201);
       expect(mockUserCreate).toHaveBeenCalled();
+    });
+
+    it("allows login with a username without email verification", async () => {
+      const mockUser = {
+        _id: "507f1f77bcf86cd799439011",
+        username: "demo-applicant",
+        active: true,
+        role: "applicant",
+        matchPassword: jest.fn().mockResolvedValue(true),
+      };
+      mockUserFindOne.mockReturnValueOnce({
+        select: jest.fn().mockResolvedValue(mockUser),
+      });
+
+      const res = await request(app).post("/api/sessions/applicant").send({
+        email: "demo-applicant",
+        password: "password123",
+      });
+
+      expect(res.status).toBe(201);
+      expect(res.body.user.username).toBe("demo-applicant");
     });
   });
 
@@ -181,28 +200,36 @@ describe("Authentication & Applicant Workflow Backend Tests", () => {
       expect(res.body.message).toBe("Invalid Credentials");
     });
 
-    it("should return 403 with emailNotVerified when email is unverified", async () => {
-      const mockUser = {
-        _id: "507f1f77bcf86cd799439011",
-        email: "unverified@example.com",
-        active: true,
-        emailVerified: false,
+    it("creates the requested demo account on first login", async () => {
+      process.env.ENABLE_DEMO_LOGINS = "true";
+      process.env.DEMO_APPLICANT_PASSWORD = "test-demo-password-12";
+      const demoUser = {
+        _id: "507f1f77bcf86cd799439012",
+        username: "demo-applicant",
         role: "applicant",
+        active: true,
         matchPassword: jest.fn().mockResolvedValue(true),
       };
+      mockUserFindOne
+        .mockReturnValueOnce({ select: jest.fn().mockResolvedValue(null) })
+        .mockReturnValueOnce({ select: jest.fn().mockResolvedValue(demoUser) });
+      mockUserCreate.mockResolvedValueOnce({});
 
-      mockUserFindOne.mockReturnValueOnce({
-        select: jest.fn().mockResolvedValue(mockUser),
-      });
+      const res = await request(app).post("/api/sessions/demo/applicant");
 
-      const res = await request(app).post("/api/sessions/applicant").send({
-        email: "unverified@example.com",
-        password: "password123",
-      });
-
-      expect(res.status).toBe(403);
-      expect(res.body.emailNotVerified).toBe(true);
+      expect(res.status).toBe(201);
+      expect(mockUserCreate).toHaveBeenCalledWith(
+        expect.objectContaining({
+          username: "demo-applicant",
+          role: "applicant",
+          password: "test-demo-password-12",
+        }),
+      );
+      expect(res.body.user.username).toBe("demo-applicant");
+      delete process.env.ENABLE_DEMO_LOGINS;
+      delete process.env.DEMO_APPLICANT_PASSWORD;
     });
+
   });
 
   describe("Applicant Application Management", () => {

@@ -27,26 +27,21 @@ export function AuthProvider({ children }) {
 
   const login = useCallback(async (identifier, password, role = null) => {
     let session;
-    try {
-      if (role === "applicant")
-        session = await api.loginApplicant(identifier, password);
-      else if (role === "staff")
-        session = await api.loginStaff(identifier, password);
-      else if (role === "admin")
-        session = await api.loginAdmin(identifier, password);
-      else session = await api.login(identifier, password);
-      setUser(session.user);
-      return session.user;
-    } catch (err) {
-      if (err.body?.emailNotVerified) {
+    if (role === "applicant")
+      session = await api.loginApplicant(identifier, password);
+    else if (role === "staff")
+      session = await api.loginStaff(identifier, password);
+    else if (role === "admin")
+      session = await api.loginAdmin(identifier, password);
+    else session = await api.login(identifier, password);
+    setUser(session.user);
+    return session.user;
+  }, []);
 
-        try {
-          const session = await api.currentSession();
-          setUser(session.user);
-        } catch {}
-      }
-      throw err;
-    }
+  const loginDemo = useCallback(async (role) => {
+    const session = await api.loginDemo(role);
+    setUser(session.user);
+    return session.user;
   }, []);
 
   const registerApplicant = useCallback(
@@ -86,7 +81,7 @@ export function AuthProvider({ children }) {
 
   return (
     <AuthContext.Provider
-      value={{ user, setUser, loading, login, register, registerApplicant, logout }}
+      value={{ user, setUser, loading, login, loginDemo, register, registerApplicant, logout }}
     >
       {children}
     </AuthContext.Provider>

@@ -17,7 +17,6 @@ jest.unstable_mockModule("../middleware/authMiddleware.js", () => ({
 
 // Mock Mailer
 jest.unstable_mockModule("../utils/mailer.js", () => ({
-  sendVerificationEmail: jest.fn().mockResolvedValue(true),
   sendPasswordResetEmail: jest.fn().mockResolvedValue(true),
   sendTempPasswordEmail: jest.fn().mockResolvedValue(true),
   sendStatusEmail: jest.fn().mockResolvedValue(true),
@@ -159,7 +158,6 @@ describe("Backend Controllers & Routes Detailed Unit/Integration Test Suite", ()
         username: "staff@example.com",
         email: "staff@example.com",
         role: "staff",
-        emailVerified: true,
       });
 
       const res = await request(app)

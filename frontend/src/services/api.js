@@ -88,6 +88,7 @@ export const api = {
       method: "POST",
       body: { email, password },
     }),
+  loginDemo: (role) => request(`/sessions/demo/${role}`, { method: "POST" }),
   logout: () => request("/sessions/current", { method: "DELETE" }),
   currentSession: () => request("/sessions/current"),
 
@@ -102,9 +103,6 @@ export const api = {
       method: "POST",
       body: { username, fullName, password, role, accessCode, email },
     }),
-  verifyEmail: (code) =>
-    request("/users/verify-email", { method: "POST", body: { code } }),
-  resendVerifyCode: () => request("/users/resend-verify", { method: "POST" }),
   forgotPassword: (email) =>
     request("/users/forgot-password", { method: "POST", body: { email } }),
   staffForgotPassword: (accessCode, email) =>

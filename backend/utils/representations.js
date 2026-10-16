@@ -13,7 +13,6 @@ export function userRepresentation(u, { requester } = {}) {
     role: u.role,
     active: u.active,
     email: u.email,
-    emailVerified: u.emailVerified,
     mustChangePassword: u.mustChangePassword,
     createdAt: u.createdAt,
     _links: {

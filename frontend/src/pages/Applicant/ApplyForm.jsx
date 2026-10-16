@@ -27,8 +27,6 @@ import {
   SelectValue,
 } from "../../components/ui/select.jsx";
 import FileDrop from "../../components/FileDrop.jsx";
-import CameraModal from "../../components/CameraModal.jsx";
-import { Camera } from "lucide-react";
 import Stepper from "../../components/Stepper.jsx";
 import { api } from "../../services/api.js";
 import EthiopianDobPicker from "../../components/EthiopianDobPicker.jsx";
@@ -81,8 +79,6 @@ export default function ApplyForm() {
   ];
 
   const [appType, setAppType] = useState(null);
-  const [showOtherCamera, setShowOtherCamera] = useState(false);
-
   const [renewalRef, setRenewalRef] = useState("");
   const [renewalLookupStatus, setRenewalLookupStatus] = useState("idle");
   const [renewalLookupError, setRenewalLookupError] = useState("");
@@ -1044,7 +1040,7 @@ export default function ApplyForm() {
                 accept=".jpg,.jpeg,.png"
                 file={photo}
                 onChange={setPhoto}
-                allowCamera={true}
+                allowCamera={false}
               />
               {errors.photo && (
                 <p className="text-rose-600 text-xs font-semibold mt-1.5">
@@ -1060,6 +1056,7 @@ export default function ApplyForm() {
                 accept=".pdf,.jpg,.jpeg,.png,.docx"
                 file={education}
                 onChange={setEducation}
+                allowCamera={false}
               />
               {errors.education && (
                 <p className="text-rose-600 text-xs font-semibold mt-1.5">
@@ -1077,6 +1074,7 @@ export default function ApplyForm() {
                   hint={t("tradeLicenseHint")}
                   file={tradeLicenseFile}
                   onChange={setTradeLicenseFile}
+                  allowCamera={false}
                 />
                 {errors.tradeLicenseFile && (
                   <p className="text-rose-600 text-xs font-semibold mt-1.5">
@@ -1105,14 +1103,6 @@ export default function ApplyForm() {
                     <Upload size={14} className="stroke-[2.5] shrink-0" />
                     <span>Browse</span>
                   </button>
-                  <button
-                    type="button"
-                    onClick={() => setShowOtherCamera(true)}
-                    className="flex items-center justify-center gap-2 bg-[#1E293B] hover:bg-[#0F172A] text-white text-xs font-bold px-5 py-2.5 rounded-lg shadow-md shadow-slate-900/25 hover:shadow-lg active:scale-[0.97] transition-all cursor-pointer border border-slate-700/30 shrink-0 whitespace-nowrap min-w-[110px]"
-                  >
-                    <Camera size={14} className="stroke-[2.5] shrink-0" />
-                    <span>Take Photo</span>
-                  </button>
                 </div>
                 <input
                   id="otherFilesInput"
@@ -1133,17 +1123,6 @@ export default function ApplyForm() {
                   }}
                 />
               </div>
-
-              {showOtherCamera && (
-                <CameraModal
-                  mode="document"
-                  onClose={() => setShowOtherCamera(false)}
-                  onCapture={(capturedFile) => {
-                    setOtherFiles((prev) => [...prev, capturedFile]);
-                    setShowOtherCamera(false);
-                  }}
-                />
-              )}
 
               {otherFiles.length > 0 && (
                 <div className="mt-3 grid sm:grid-cols-2 gap-2.5">

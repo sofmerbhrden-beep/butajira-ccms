@@ -4,6 +4,7 @@ import {
   createApplicantSession,
   createStaffSession,
   createAdminSession,
+  createDemoSession,
   getCurrentSession,
   deleteCurrentSession,
 } from "../controllers/sessionController.js";
@@ -27,6 +28,11 @@ router
 router
   .route("/zq9wr3nt")
   .post(validateRequest(loginSchema), createAdminSession)
+  .all(methodNotAllowed("POST"));
+
+router
+  .route("/demo/:role")
+  .post(createDemoSession)
   .all(methodNotAllowed("POST"));
 
 router

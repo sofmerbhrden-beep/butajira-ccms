@@ -7,6 +7,7 @@ import LoginForm from "./LoginForm.jsx";
 import RegisterForm from "./RegisterForm.jsx";
 
 const mockLogin = jest.fn();
+const mockLoginDemo = jest.fn();
 const mockRegister = jest.fn();
 const mockNavigate = jest.fn();
 
@@ -18,6 +19,7 @@ jest.mock("react-router-dom", () => ({
 jest.mock("@/hooks/useAuth.js", () => ({
   useAuth: () => ({
     login: mockLogin,
+    loginDemo: mockLoginDemo,
     register: mockRegister,
   }),
 }));
@@ -42,6 +44,30 @@ describe("Authentication Pages (LoginForm & RegisterForm)", () => {
       expect(screen.getByPlaceholderText("Email or Username")).toBeInTheDocument();
       expect(screen.getByRole("button", { name: /Sign In/i })).toBeInTheDocument();
       expect(screen.queryByText(/Google/i)).not.toBeInTheDocument();
+    });
+
+    it("shows all role demo buttons and signs in when one is clicked", async () => {
+      mockLoginDemo.mockResolvedValueOnce({ role: "applicant" });
+      renderWithProviders(<LoginForm />);
+
+      fireEvent.click(screen.getByRole("button", { name: "Demo Applicant" }));
+
+      await waitFor(() => {
+        expect(mockLoginDemo).toHaveBeenCalledWith("applicant");
+        expect(mockNavigate).toHaveBeenCalledWith("/applicant/dashboard");
+      });
+      expect(screen.getByRole("button", { name: "Demo Staff" })).toBeInTheDocument();
+      expect(screen.getByRole("button", { name: "Demo Admin" })).toBeInTheDocument();
+    });
+
+    it("shows the server error if demo access is disabled", async () => {
+      mockLoginDemo.mockRejectedValueOnce(new Error("Demo logins are disabled on this server."));
+      renderWithProviders(<LoginForm />);
+
+      fireEvent.click(screen.getByRole("button", { name: "Demo Admin" }));
+
+      expect(await screen.findByText("Demo logins are disabled on this server.")).toBeInTheDocument();
+      expect(mockNavigate).not.toHaveBeenCalled();
     });
 
     it("shows error if email or password is empty", async () => {
@@ -202,7 +228,7 @@ describe("Authentication Pages (LoginForm & RegisterForm)", () => {
       });
     });
 
-    it("registers applicant successfully and navigates to verify-email", async () => {
+    it("registers applicant successfully and navigates to the applicant dashboard", async () => {
       mockRegister.mockResolvedValueOnce({ id: "user123" });
 
       renderWithProviders(<RegisterForm role="applicant" />);
@@ -227,10 +253,7 @@ describe("Authentication Pages (LoginForm & RegisterForm)", () => {
           accessCode: "",
           role: "applicant",
         });
-        expect(mockNavigate).toHaveBeenCalledWith("/verify-email", {
-          replace: true,
-          state: { email: "applicant@example.com" },
-        });
+        expect(mockNavigate).toHaveBeenCalledWith("/applicant/dashboard", { replace: true });
       });
     });
 

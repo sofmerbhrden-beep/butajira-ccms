@@ -4,8 +4,6 @@ import {
   registerUser,
   validateStaffAccessCode,
   validateAdminAccessCode,
-  verifyEmail,
-  resendVerifyCode,
   forgotPassword,
   resetPassword,
   staffForgotPassword,
@@ -22,7 +20,6 @@ import { methodNotAllowed } from "../middleware/methodNotAllowed.js";
 import { validateRequest } from "../middleware/validateRequest.js";
 import {
   registerSchema,
-  verifyEmailSchema,
   forgotPasswordSchema,
   resetPasswordSchema,
   updateUserSchema
@@ -34,9 +31,6 @@ router.route("/register").post(validateRequest(registerSchema), registerUser).al
 
 router.route("/validate-staff-code").post(validateStaffAccessCode).all(methodNotAllowed("POST"));
 router.route("/validate-admin-code").post(validateAdminAccessCode).all(methodNotAllowed("POST"));
-
-router.route("/verify-email").post(protect, validateRequest(verifyEmailSchema), verifyEmail).all(methodNotAllowed("POST"));
-router.route("/resend-verify").post(protect, resendVerifyCode).all(methodNotAllowed("POST"));
 
 router.route("/forgot-password").post(validateRequest(forgotPasswordSchema), forgotPassword).all(methodNotAllowed("POST"));
 router.route("/reset-password").post(validateRequest(resetPasswordSchema), resetPassword).all(methodNotAllowed("POST"));

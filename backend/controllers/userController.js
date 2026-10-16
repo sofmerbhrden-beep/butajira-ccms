@@ -1,10 +1,7 @@
 import crypto from "crypto";
 import User from "../models/User.js";
 import { sendToken } from "../utils/token.js";
-import {
-  sendVerificationEmail,
-  sendPasswordResetEmail,
-} from "../utils/mailer.js";
+import { sendPasswordResetEmail } from "../utils/mailer.js";
 import {
   userRepresentation,
   collectionRepresentation,
@@ -18,10 +15,6 @@ function genTempPassword() {
     crypto.randomBytes(10),
     (b) => chars[b % chars.length],
   ).join("");
-}
-
-function genVerifyCode() {
-  return String(Math.floor(100000 + Math.random() * 900000));
 }
 
 export async function validateStaffAccessCode(req, res, next) {
@@ -234,7 +227,6 @@ export async function registerUser(req, res, next) {
         password,
         role: targetRole,
         email: email.trim().toLowerCase(),
-        emailVerified: true,
       });
 
       sendToken(res, user);
@@ -266,98 +258,14 @@ export async function registerUser(req, res, next) {
       password,
       role: targetRole,
       email: email.trim().toLowerCase(),
+      active: true,
     });
-
-
-    const code = genVerifyCode();
-    user.verifyCode = code;
-    user.verifyCodeExpires = new Date(Date.now() + 15 * 60 * 1000);
-    user.verifyCodeSentAt = new Date();
-    await user.save();
-    try {
-      await sendVerificationEmail(email.trim().toLowerCase(), code);
-      console.log(
-        "[mailer] verification email sent to",
-        email.trim().toLowerCase(),
-      );
-    } catch (mailErr) {
-      console.error("[mailer] FAILED to send verification email:", mailErr);
-    }
 
     sendToken(res, user);
     return res
       .status(201)
       .location(`${API_ROOT}/users/${user._id}`)
       .json(userRepresentation(user, { requester: user }));
-  } catch (err) {
-    next(err);
-  }
-}
-
-export async function verifyEmail(req, res, next) {
-  try {
-    const { code } = req.body;
-    if (!code) return res.status(400).json({ message: "Code is required" });
-
-    const user = await User.findById(req.user._id).select(
-      "+verifyCode +verifyCodeExpires",
-    );
-    if (user.emailVerified) return res.json({ message: "Already verified" });
-    if (!user.verifyCode || user.verifyCode !== String(code).trim())
-      return res.status(400).json({ message: "Invalid code" });
-    if (user.verifyCodeExpires < new Date())
-      return res
-        .status(400)
-        .json({ message: "Code expired request a new one" });
-
-    user.emailVerified = true;
-    user.verifyCode = undefined;
-    user.verifyCodeExpires = undefined;
-    await user.save();
-
-    res.json(userRepresentation(user, { requester: user }));
-  } catch (err) {
-    next(err);
-  }
-}
-
-export async function resendVerifyCode(req, res, next) {
-  try {
-    const user = await User.findById(req.user._id).select(
-      "+verifyCode +verifyCodeExpires +verifyCodeSentAt",
-    );
-    if (user.emailVerified)
-      return res.status(409).json({ message: "Already verified" });
-    if (!user.email)
-      return res.status(400).json({ message: "No email on file" });
-
-    if (
-      user.verifyCodeSentAt &&
-      Date.now() - user.verifyCodeSentAt.getTime() < 60 * 1000
-    )
-      return res.status(429).json({
-        message: "Please wait 60 seconds before requesting a new code",
-        retryAfter: Math.ceil(
-          (60000 - (Date.now() - user.verifyCodeSentAt.getTime())) / 1000,
-        ),
-      });
-
-    const code = genVerifyCode();
-    user.verifyCode = code;
-    user.verifyCodeExpires = new Date(Date.now() + 15 * 60 * 1000);
-    user.verifyCodeSentAt = new Date();
-    await user.save();
-    try {
-      await sendVerificationEmail(user.email, code);
-      console.log("[mailer] resend verification email sent to", user.email);
-    } catch (mailErr) {
-      console.error("[mailer] FAILED to resend verification email:", mailErr);
-      return res
-        .status(500)
-        .json({ message: "Failed to send email: " + mailErr.message });
-    }
-
-    res.json({ message: "Verification code sent" });
   } catch (err) {
     next(err);
   }

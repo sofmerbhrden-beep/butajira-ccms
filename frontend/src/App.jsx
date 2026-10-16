@@ -5,7 +5,6 @@ import { LanguageProvider } from "./context/LanguageContext.jsx";
 import RequireAuth from "./components/RequireAuth.jsx";
 import LoginForm from "./pages/LoginForm.jsx";
 import RegisterForm from "./pages/RegisterForm.jsx";
-import VerifyEmail from "./pages/VerifyEmail.jsx";
 import ChangePassword from "./pages/ChangePassword.jsx";
 import ForgotPassword from "./pages/ForgotPassword.jsx";
 import ResetPassword from "./pages/ResetPassword.jsx";
@@ -53,14 +52,6 @@ export default function App() {
             <Route
               path="/"
               element={<Navigate to="/auth/login" replace />}
-            />
-            <Route
-              path="/verify-email"
-              element={
-                <RequireAuth>
-                  <VerifyEmail />
-                </RequireAuth>
-              }
             />
             <Route
               path="/change-password"
